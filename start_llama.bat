@@ -1,0 +1,1 @@
+.\llama\llama-server.exe -m .\model.gguf
