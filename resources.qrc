@@ -1,0 +1,19 @@
+﻿<RCC>
+    <!-- Use the root prefix '/' -->
+    <qresource prefix="/">
+        <!-- QML Files -->
+        <file>design/Group_5.qml</file>
+        <file>design/Gadget.ui.qml</file>
+        <!-- Image Assets -->
+        <!-- IMPORTANT: You must list ALL your assets here. I have added a placeholder file, but replace it with your actual files. -->
+        <file>design/assets/ellipse_1.png</file>
+        <file>design/assets/ellipse_1@2x.png</file>
+        <!-- You would continue listing all your files from design/assets/ here -->
+
+        <!-- Fonts -->
+        <!-- IMPORTANT: You must list ALL your font files here. -->
+        <file>design/fonts/centurygothic.ttf</file>
+        <file>design/fonts/inter-regular.ttf</file>
+        <!-- You would continue listing all your files from design/fonts/ here -->
+    </qresource>
+</RCC>
