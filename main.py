@@ -65,12 +65,12 @@ def generate(prompt, max_tokens=400):
         logging.error(f"Ошибка в функции generate: {str(e)}")
         return {"error": str(e)}
 
-def chat(message):
+def chat(history_list):
     """Общается с моделью в режиме чата."""
     try:
         response = client.chat.completions.create(
             model=MODEL_PATH,
-            messages=[{"role": "user", "content": message}],
+            messages=history_list,
             max_tokens=256,
             temperature=0.7,
             stop=["<end_of_turn>"]

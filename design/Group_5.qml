@@ -1,360 +1,337 @@
-import QtQuick 2.15 // <-- Added version number (2.15 is standard for Qt 5.15)
-import QtQuick.Shapes 1.15 // <-- Added version number (1.15 is standard for this module)
-import "." as Untitled
-import QtQuick.Controls 2.5
+import QtQuick 2.15
+import QtQuick.Shapes 1.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Window 2.1
 
-ApplicationWindow {
-  visible: true
-
-    title: "My QML App"
-
+Window{
+    visible: true
+    title: "PupuAI - Твоя розовая помощница"
     height: 796
     width: 1314
 
     Rectangle {
-        id: rectangle_1
-
+        id: mainBackground
         height: 796.16
-        width: 1022.72
-
+        width: parent.width
         color: "#edc0c0"
     }
-    Rectangle {
-        id: rectangle_5
 
-        x: 1020.90
-
-        height: 796.16
-        width: 293.44
-
-        color: "#edc0c0"
-    }
     Text {
         id: pupuAI_
-
         x: 118
         y: 16
-
-        height: 36
-        width: 613
-
         color: "#a94f4f"
         font.family: "Century Gothic"
         font.pixelSize: 32
         font.weight: Font.Normal
-        horizontalAlignment: Text.AlignLeft
-        text: "PupuAI - Твоя розовая помощница "
-        verticalAlignment: Text.AlignTop
+        text: "PupuAI - Твоя розовая помощница"
     }
-    Rectangle {
-        id: rectangle_2
 
+    // --- Область чата/вывода (без изменений) ---
+    Rectangle {
+        id: chatArea
         x: 37.76
         y: 63.24
-
-        height: 691.52
+        height: 610.52
         width: 742.93
-
         color: "#efa3a3"
         radius: 60
-    }
-    Text {
-        id: generate_
+        clip: true
 
-        x: 92
-        y: 261
+        Flickable {
+            id: chatFlickable
+            anchors.fill: parent
+            anchors.margins: 30
+            clip: true
+            flickableDirection: Flickable.VerticalFlick
+            ScrollBar.vertical: ScrollBar {}
+            ScrollBar.horizontal: null
 
-        height: 11
-        width: 114
+            TextArea.flickable: TextArea {
+                id: chatOutput
+                font.family: "Century Gothic"
+                font.pixelSize: 16
+                color: "#a94f4f"
+                readOnly: true
+                wrapMode: TextArea.WordWrap
 
-        color: "#ffffff"
-        font.family: "Inter"
-        font.pixelSize: 15
-        font.weight: Font.Normal
-        horizontalAlignment: Text.AlignLeft
-        text: "Generate..."
-        verticalAlignment: Text.AlignTop
-    }
-    Untitled.Gadget {
-        id: element
-
-        x: 54
-        y: 655
-    }
-    Rectangle {
-        id: rectangle_3
-
-        x: 63.69
-        y: 107.82
-
-        height: 46.86
-        width: 230.66
-
-        color: "#d37070"
-        radius: 40
-    }
-    Rectangle {
-        id: rectangle_4
-
-        x: 63.69
-        y: 182.89
-
-        height: 46.86
-        width: 347.12
-
-        color: "#d37070"
-        radius: 40
-    }
-    Rectangle {
-        id: rectangle_6
-
-        x: 1052.29
-        y: 52.32
-
-        height: 46.86
-        width: 230.66
-
-        color: "#d37070"
-        radius: 40
-    }
-    Rectangle {
-        id: rectangle_8
-
-        x: 1052.29
-        y: 193.35
-
-        height: 46.86
-        width: 230.66
-
-        color: "#d37070"
-        radius: 40
-    }
-    Rectangle {
-        id: rectangle_7
-
-        x: 1052.29
-        y: 121.93
-
-        height: 46.86
-        width: 230.66
-
-        color: "#d37070"
-        radius: 40
-    }
-    Text {
-        id: element_1
-
-        x: 82.80
-        y: 121.93
-
-        height: 19.56
-        width: 198.81
-
-        color: "#ffffff"
-        font.family: "Century Gothic"
-        font.pixelSize: 15
-        font.weight: Font.Normal
-        horizontalAlignment: Text.AlignLeft
-        text: "Привет, задавай вопрос!"
-        verticalAlignment: Text.AlignTop
-    }
-    Text {
-        id: element_2
-
-        x: 82.80
-        y: 196.99
-
-        height: 19.56
-        width: 322.10
-
-        color: "#ffffff"
-        font.family: "Century Gothic"
-        font.pixelSize: 15
-        font.weight: Font.Normal
-        horizontalAlignment: Text.AlignLeft
-        text: "Привет, мне нужно сгенерировать стих)"
-        verticalAlignment: Text.AlignTop
-    }
-    Text {
-        id: element_3
-
-        x: 1077.31
-        y: 65.06
-
-        height: 19.56
-        width: 181.07
-
-        color: "#ffffff"
-        font.family: "Century Gothic"
-        font.pixelSize: 15
-        font.weight: Font.Normal
-        horizontalAlignment: Text.AlignLeft
-        text: "Привет, мне нужно с..."
-        verticalAlignment: Text.AlignTop
-    }
-    Image {
-        id: ellipse_1
-
-        x: 71.88
-        y: 257.95
-
-        source: "assets/ellipse_1.png"
-    }
-    Button {
-        id: group_3
-
-        x: 821.63
-        y: 63.24
-
-        height: 44.58
-        width: 151.04
-
-        Shape {
-            id: rectangle_9
-
-            height: 44.58
-            width: 151.04
-
-            ShapePath {
-                id: rectangle_9_ShapePath0
-
-                fillColor: "#c96a6a"
-                fillRule: ShapePath.WindingFill
-                strokeColor: "transparent"
-                strokeWidth: 1
-
-                PathSvg {
-                    id: rectangle_9_ShapePath0_PathSvg0
-
-                    path: "M 0 0 L 151.04202270507812 0 L 151.04202270507812 44.58469009399414 L 0 44.58469009399414 L 0 0 Z"
+                Component.onCompleted: {
+                    text = "Привет! Я PupuAI, ваша розовая помощница.\n"
                 }
             }
-
-            Text {
-                id: element_4
-
-                x: 19
-                y: 11
-
-                height: 22
-                width: 113
-
-                color: "#ffffff"
-                font.family: "Century Gothic"
-                font.pixelSize: 20
-                font.weight: Font.Normal
-                horizontalAlignment: Text.AlignLeft
-                text: "Сохранить"
-                verticalAlignment: Text.AlignTop
+            function scrollToBottom() {
+                contentY = contentHeight - height
             }
         }
-
-        onClicked: {
-            console.debug("save clicked")
-        }
     }
-    Button {
-        id: group_2
 
-        x: 828.91
+    // --- Поле ввода запроса (без изменений) ---
+    Rectangle {
+        id: inputBackground
+        x: 37.76
         y: 682.42
-         hoverEnabled: false
-        height: 44.58
+        height: 60
+        width: 742.93
+        color: "#d37070"
+        radius: 30
 
-        width: 151.04
-        onClicked: {
-            console.debug("generate clicked")
-        }
-
-        background:
-            Rectangle {
-                id: rectangle_10
-
-                height: 44.58
-                width: 151.04
-
-                color: "#c96a6a"
-                radius: 40
-            }
-
-        Text {
-            id: element_5
-
-            x: 15
-            y: 11
-
-            height: 22.29
-            width: 140.58
-
-            color: "#ffffff"
+        TextField {
+            id: promptInput
+            anchors.fill: parent
+            anchors.margins: 10
+            placeholderText: "Введите ваш запрос здесь..."
             font.family: "Century Gothic"
-            font.pixelSize: 16
-            font.weight: Font.Normal
-            horizontalAlignment: Text.AlignLeft
-            text: "Сгенерировать"
-            verticalAlignment: Text.AlignTop
+            font.pixelSize: 18
+            color: "white"
+            background: Rectangle { color: "transparent" }
+            enabled: !aiWorker.isWorking
+            onAccepted: group_2.clicked()
         }
     }
-    Item {
-        id: group_4
 
-        x: 821.63
-        y: 121.93
-
-        height: 44.58
-        width: 151.04
-
-        Rectangle {
-            id: rectangle_11
-
-            height: 44.58
-            width: 151.04
-
-            color: "#c96a6a"
-            radius: 40
-        }
-        Text {
-            id: element_6
-
-            x: 35.37
-            y: 11.07
-
-            height: 22
-            width: 91
-
-            color: "#ffffff"
-            font.family: "Century Gothic"
-            font.pixelSize: 20
-            font.weight: Font.Normal
-            horizontalAlignment: Text.AlignLeft
-            text: "История"
-            verticalAlignment: Text.AlignTop
-        }
+    // -------------------------------------------------------------------
+    // --- ИЗМЕНЕНО: Колонка истории (правая панель) ---
+    // -------------------------------------------------------------------
+    Rectangle {
+        id: historyPanel
+        x: 1020.90
+        height: 796.16
+        width: 293.44
+        color: "#edc0c0"
     }
     Text {
-        id: element_7
-
+        id: historyTitle
         x: 1096
         y: 16
-
-        height: 27.75
-        width: 161.51
-
         color: "#a94f4f"
         font.family: "Century Gothic"
         font.pixelSize: 20
         font.weight: Font.Normal
-        horizontalAlignment: Text.AlignLeft
         text: "История чатов"
-        verticalAlignment: Text.AlignTop
+    }
+
+    // --- ИЗМЕНЕНО: Динамический список для истории чатов ---
+    Flickable {
+        id: historyFlickable
+        x: 1035.9 // (1020.90 + 15)
+        y: 55 // (16 + 20 + 19 (отступ))
+        width: 263.44 // (293.44 - 30 (отступы))
+        height: 721 // (796 - 55 - 20 (отступы))
+
+        clip: true
+        flickableDirection: Flickable.VerticalFlick
+        ScrollBar.vertical: ScrollBar {}
+
+        ListView {
+            id: historyListView
+            anchors.fill: parent
+            spacing: 10
+
+            // Модель будет установлена из Python (aiWorker.historyListChanged)
+            model: []
+
+            // Делегат (как выглядит каждый элемент списка)
+            delegate: ItemDelegate {
+                width: parent.width
+                height: 50
+
+                background: Rectangle {
+                    color: "#d37070"
+                    radius: 20
+                    border.color: held ? "#a94f4f" : "transparent"
+                    border.width: 2
+                }
+
+                RowLayout {
+                    anchors.fill: parent
+                    anchors.leftMargin: 15
+                    anchors.rightMargin: 10
+                    spacing: 10
+
+                    // Имя файла (modelData - это элемент из списка model)
+                    Text {
+                        Layout.fillWidth: true
+                        text: modelData
+                        color: "white"
+                        font.family: "Century Gothic"
+                        elide: Text.ElideRight // Обрезать, если не влезает
+                    }
+
+                    // Кнопка удаления "X"
+                    Button {
+                        text: "X"
+                        font.pixelSize: 12
+                        font.bold: true
+                        Layout.preferredWidth: 30
+                        Layout.preferredHeight: 30
+                        background: Rectangle {
+                            color: "#a94f4f"
+                            radius: 15
+                        }
+                        onClicked: {
+                            // Остановить всплытие клика,
+                            // чтобы не загрузился чат
+                            mouse.accepted = true
+                            aiWorker.deleteChat(modelData)
+                        }
+                    }
+                }
+
+                // При клике на сам элемент - загружаем чат
+                onClicked: {
+                    aiWorker.loadChat(modelData)
+                }
+            }
+        }
+    }
+
+
+    // --- Кнопка "Сгенерировать" (group_2) ---
+    Button {
+        id: group_2
+        x: 828.91
+        y: 692.42
+        height: 44.58
+        width: 151.04
+        enabled: !aiWorker.isWorking && promptInput.text.trim().length > 0
+
+        onClicked: {
+            var currentPrompt = promptInput.text
+            promptInput.clear()
+
+            // ИЗМЕНЕНО: Берем режим из ComboBox
+            aiWorker.startGeneration(
+                currentPrompt,
+                modeSelector.currentValue, // <--- ИЗМЕНЕНИЕ ЗДЕСЬ
+                400
+            );
+        }
+
+        background: Rectangle {
+            id: rectangle_10
+            height: 44.58
+            width: 151.04
+            color: group_2.enabled ? "#c96a6a" : "#999999"
+            radius: 40
+        }
+        Text {
+            id: element_5
+            anchors.centerIn: parent
+            color: "#ffffff"
+            font.family: "Century Gothic"
+            font.pixelSize: 16
+            text: aiWorker.isWorking ? "Обработка..." : "Сгенерировать"
+        }
+    }
+
+    // --- Индикатор загрузки (без изменений) ---
+    BusyIndicator {
+        id: busyIndicator
+        anchors.centerIn: group_2
+        running: aiWorker.isWorking
+        visible: aiWorker.isWorking
+        height: 44.58
+        width: 44.58
+    }
+
+    // --- ИЗМЕНЕНО: Кнопка "Сохранить чат" ---
+    Button {
+        id: group_3
+        x: 821.63
+        y: 63.24
+        height: 44.58
+        width: 151.04
+        background: Rectangle { color: "#c96a6a"; radius: 20; border.color: "#993333"; border.width: 2; }
+        Text {
+            anchors.centerIn: parent; color: "#ffffff"; font.family: "Century Gothic"; font.pixelSize: 20;
+            text: "Сохранить чат" // ИЗМЕНЕН ТЕКСТ
+        }
+        // ИЗМЕНЕНО: Вызываем слот сохранения
+        onClicked: {
+            aiWorker.saveCurrentChat()
+        }
+    }
+
+    // --- ИЗМЕНЕНО: Кнопка "Обновить" (список истории) ---
+    Button {
+        id: group_4
+        x: 821.63
+        y: 121.93
+        height: 44.58
+        width: 151.04
+        background: Rectangle { color: "#c96a6a"; radius: 20; border.color: "#993333"; border.width: 2; }
+        Text {
+            anchors.centerIn: parent; color: "#ffffff"; font.family: "Century Gothic"; font.pixelSize: 20;
+            text: "Обновить" // ИЗМЕНЕН ТЕКСТ
+        }
+        // ИЗМЕНЕНО: Вызываем слот обновления
+        onClicked: {
+            aiWorker.refreshChatList()
+        }
+    }
+
+    // --- Кнопка "Новый чат" (без изменений) ---
+    Button {
+        id: newChatButton
+        x: 821.63
+        y: 180.62
+        height: 44.58
+        width: 151.04
+        background: Rectangle { color: "#c96a6a"; radius: 20; border.color: "#993333"; border.width: 2; }
+        Text {
+            anchors.centerIn: parent; color: "#ffffff"; font.family: "Century Gothic"; font.pixelSize: 20; text: "Новый чат"
+        }
+        onClicked: {
+            aiWorker.clearChatHistory()
+        }
+    }
+
+
+
+ComboBox {
+        id: modeSelector
+        x: 821.63
+        y: 239.31
+        width: 151.04
+        height: 44.58
+        model: [ "chat", "gen" ] // Упрощенная модель (просто строки)
+        currentIndex: 0
+        font.family: "Century Gothic"
+        font.pixelSize: 20
+        background: Rectangle {
+            color: "#c96a6a"
+            radius: 20
+            border.color: "#993333"
+            border.width: 2
+        }
+
+
+    }
+    // --- ИЗМЕНЕНИЕ: Подписка на сигналы (Connections) ---
+    Connections {
+        target: aiWorker
+
+        // (Этот блок без изменений, но важен)
+        function onAiResponseReady(message) {
+            var atBottom = (chatFlickable.contentY >= chatFlickable.contentHeight - chatFlickable.height - 20)
+            chatOutput.append(message)
+            chatOutput.append("")
+            if (atBottom) {
+                Qt.callLater(chatFlickable.scrollToBottom)
+            }
+        }
+
+        // (Этот блок без изменений, но важен)
+        function onClearChatDisplay() {
+            chatOutput.clear()
+            Qt.callLater(chatFlickable.scrollToBottom)
+        }
+
+        // --- ДОБАВЛЕНО: Подписка на обновление списка истории ---
+        function onHistoryListChanged(files) {
+            historyListView.model = files
+        }
     }
 }
-
-/*##^##
-Designer {
-    D{i:0;formeditorZoom:0.75}D{i:1}D{i:2}D{i:3}D{i:4}D{i:5}D{i:6}D{i:7}D{i:8}D{i:9}D{i:10}
-D{i:11}D{i:12}D{i:13}D{i:14}D{i:15}D{i:18}D{i:20}D{i:17}D{i:16}D{i:23}D{i:21}D{i:25}
-D{i:26}D{i:24}D{i:27}
-}
-##^##*/
 
